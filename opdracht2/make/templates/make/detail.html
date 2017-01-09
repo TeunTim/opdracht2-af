@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+
+        <!-- logo -->
+        <div class="navbar-header ">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target = "#topBar">
+                <span class = "icon-bar"></span>
+                <span class = "icon-bar"></span>
+                <span class = "icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{%  url 'make:welcome' %}">Tosti</a>
+        </div>
+
+        <!-- andere dingen -->
+        <div class="collapse navbar-collapse" id = "topBar">
+            <ul class = "nav navbar-nav">
+                <li class = "navagatiebar">
+                    <a href = "{% url 'make:create' %}" class = "navagatiebar">
+                        <span class = "glyphicon glyphicon-cutlery" aria-hidden="true"></span>&nbsp
+                        Make
+                    </a>
+                </li>
+                <li class = "navagatiebar">
+                    <a href = "{% url 'make:index' %}" class = "navagatiebar">
+                        <span class = "glyphicon glyphicon-heart-empty" aria-hidden="true"></span>&nbsp
+                        Rate
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+    </div>
+
+
+</nav>
+
+<h1>{{tosti.name}}</h1>
+{% if tosti.bread %}
+    <h3>
+    It has {{ tosti.bread }} slices of bread
+    </h3>
+{% endif %}
+{% if tosti.cheese %}
+    <h3>
+    and {{ tosti.cheese }} slices of cheese
+    </h3>
+{% endif %}
+{% if tosti.tomato %}
+    <h3>
+    and {{ tosti.tomato }} slices of tomato
+    </h3>
+{% endif %}
+{% if tosti.ham %}
+    <h3>
+    and {{ tosti.ham }} slices of ham
+    </h3>
+{% endif %}
+{% if tosti.bacon %}
+    <h3>
+    and {{ tosti.bacon }} baconstrips to finish it off
+    </h3>
+{% endif %}
+<h3> it costs {{ tosti.price }} euros and it has a rating of {{ tosti.rating }}</h3>
+
+<a href= "{% url 'make:upvote' tosti.id %}" type ="button" class="btn btn-primary">Like</a>
+
+
+
+
+
+</body>
+</html>

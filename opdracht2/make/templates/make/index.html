@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+{% load staticfiles %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="{% static 'make/style.css' %}"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<body>
+
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+
+        <!-- logo -->
+        <div class="navbar-header ">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target = "#topBar">
+                <span class = "icon-bar"></span>
+                <span class = "icon-bar"></span>
+                <span class = "icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{%  url 'make:welcome' %}">Tosti</a>
+        </div>
+
+        <!-- andere dingen -->
+        <div class="collapse navbar-collapse" id = "topBar">
+            <ul class = "nav navbar-nav">
+                <li class = "navagatiebar">
+                    <a href = "{% url 'make:create' %}" class = "navagatiebar">
+                        <span class = "glyphicon glyphicon-cutlery" aria-hidden="true"></span>&nbsp
+                        Make
+                    </a>
+                </li>
+                <li class = "navagatiebar">
+                    <a href = "{% url 'make:index' %}" class = "navagatiebar">
+                        <span class = "glyphicon glyphicon-heart-empty" aria-hidden="true"></span>&nbsp
+                        Rate
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+    </div>
+
+
+</nav>
+
+{%  if all_tostis %}
+    <h1> Hereby a list of the already created tostis
+    </h1>
+    <ul>
+    {% for tosti in all_tostis_sorted %}
+
+        <li id="name"><a href = "{%  url 'make:detail' tosti.id %}">{{ tosti.name }} : {{ tosti.rating }} likes</a></li>
+    {% endfor %}
+
+    </ul>
+{%  else %}
+    <h3> you have no tostis :(</h3>
+{% endif %}
+
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">	<link href="{% static 'make/style.css' %}" rel="stylesheet" type= "text/css"/>
+	<script src = "{% static 'make/bootstrap.js' %}"></script>
+	<script src = "{% static 'make/javascript.js' %}"></script>
+
+	<title>Make your own Tosti</title>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+
+        <!-- logo -->
+        <div class="navbar-header ">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target = "#topBar">
+                <span class = "icon-bar"></span>
+                <span class = "icon-bar"></span>
+                <span class = "icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{%  url 'make:welcome' %}">Tosti</a>
+        </div>
+
+        <!-- andere dingen -->
+        <div class="collapse navbar-collapse" id = "topBar">
+            <ul class = "nav navbar-nav">
+                <li class = "navagatiebar">
+                    <a href = "{% url 'make:create' %}" class = "navagatiebar">
+                        <span class = "glyphicon glyphicon-cutlery" aria-hidden="true"></span>&nbsp
+                        Make
+                    </a>
+                </li>
+                <li class = "navagatiebar">
+                    <a href = "{% url 'make:index' %}" class = "navagatiebar">
+                        <span class = "glyphicon glyphicon-heart-empty" aria-hidden="true"></span>&nbsp
+                        Rate
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+    </div>
+
+
+</nav>
+	<div class="container">
+		<h1 id="header">Create your own Tosti</h1>
+	</div>
+
+
+
+    <div class="form-group">
+        <label for="name"> Name your Tosti:</label>
+        <textarea class="form-control" rows = "5" id = "name"></textarea>
+    </div>
+
+	<div class="container ">
+		<div class="dropdown">
+			<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Ingredient you want to add
+			<span class="caret"></span></button>
+			<ul class="dropdown-menu">
+				<li><a href="#" id = "bread">Bread</a></li>
+				<li><a href="#" id = "cheese" >Cheese</a></li>
+				<li><a href="#" id = "ham">Ham</a></li>
+				<li><a href="#" id = "bacon">Bacon</a></li>
+				<li><a href="#" id = "tomato">Tomato</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class= "container" align="center">
+		<h3>
+			Ingredients that are in your Tosti:
+		</h3>
+
+        <ul id = 'ingredient-list'>
+
+        </ul>
+
+
+
+
+	</div>
+
+    <div class = "container">
+
+
+            {% csrf_token %}
+            <button type="submit" class="btn btn-default btn-sm" id = 'submit'>
+                <span class="glyphicon glyphicon-floppy-save"></span>
+            </button>
+	</div>
+
+
+
+</body>
+
+</html>
+
